@@ -42,43 +42,8 @@ int main(int argc, char* argv[]){
   
   cerr << "============ many_to_many_communication ============" << endl;
   /* many to many communication*/
-  msg = "";
-  for(int i = 0 ;i<1048576;i++){
-    msg += "a";
-  }
-
-  
+  msg = "Hi many-to-many communication!";
   myrdma.rdma_comm(opcode, msg); 
-
-  ifstream file_twitter("twitter_combined.txt");
-  stringstream sd;
-  if(file_twitter.is_open()){
-    sd<<file_twitter.rdbuf();
-    file_twitter.close();
-  }
-  else{
-    cout << "Unable open file" << endl;
-  }
-  /*msg = "";
-  for(int i = 0 ;i<16777216;i++){
-    msg += "a";
-  }*/
-  myrdma.rdma_comm(opcode, sd.str());
-  
-  ifstream file_wiki("wiki-Talk.txt");
-  stringstream ss;
-  if(file_wiki.is_open()){
-    ss<<file_wiki.rdbuf();
-    file_wiki.close();
-  }
-  else{
-    cout << "Unable open file" << endl;
-  }
-  /*for(int i = 0 ;i<67108864;i++){
-    msg += "a";
-  }*/
-  myrdma.rdma_comm(opcode, ss.str());
-  
 
   cerr << "============= one_to_many_communication =============" << endl;
   /* 1 to many communication */
