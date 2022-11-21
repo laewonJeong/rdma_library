@@ -30,19 +30,21 @@ int main(int argc, char* argv[]){
   myrdma.create_rdma_info();
   myrdma.send_info_change_qp();
 
-  cerr << "====================================================" << endl;
+  cerr << "================================================================================" << endl;
   
   string ip = argv[1];
   string msg;
   string opcode = "send"; //send, send_with_imm, write, write_with_imm
   
-  cerr << "============ many_to_many_communication ============" << endl;
+  cerr << "========================== many_to_many_communication ==========================" << endl;
+
   /* many to many communication*/
   msg = "[ " + ip + " ] Hi many-to-many communication!";
   myrdma.rdma_comm(opcode, msg);
   printf("recv_buffer[0]: %s\n", recv_buffer[0]); 
 
-  cerr << "============= one_to_many_communication =============" << endl;
+  cerr << "========================== one_to_many_communication ==========================" << endl;
+
   /* 1 to many communication */
   if(is_server(ip)){
     msg = "Hi one-to-many communication!";
@@ -53,7 +55,8 @@ int main(int argc, char* argv[]){
     printf("recv_buffer[0]: %s\n", recv_buffer[0]);
   }
 
-  cerr << "============= many_to_one_communication =============" << endl;
+  cerr << "========================== many_to_one_communication ==========================" << endl;
+
   /* many to 1 communication */
   if(is_server(ip)){
     myrdma.rdma_many_to_one_recv_msg(opcode);
@@ -65,7 +68,8 @@ int main(int argc, char* argv[]){
     msg = "Hi many-to-one communication!";
     myrdma.rdma_many_to_one_send_msg(opcode,msg);
   }
-  cerr << "=====================================================" << endl;
+
+  cerr << "================================================================================" << endl;
 
   myrdma.exit_rdma();
   
