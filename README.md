@@ -30,7 +30,7 @@ $ ./myRDMA <each node ip>
 string node[num_of_node] = {server_ip,"192.168.0.108"};   // 사용할 노드들의 IP
 ```
 
-### 동작 순서 
+### 통신 전 단계
 ```c
 myRDMA myrdma;
 
