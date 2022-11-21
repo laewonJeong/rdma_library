@@ -23,11 +23,12 @@ $ ./myRDMA <each node ip>
 
 ```c
 #include "myRDMA.hpp"
-#define port 40145                                        // 사용할 포트
-#define num_of_node 2                                     // 사용할 노드 개수      
-#define server_ip "192.168.0.107"                         // 일대다 통신, 다대일 통신 때 일에 해당하는 노드 IP
+#define port xxxxx                                        // 사용할 포트
+#define num_of_node 4                                     // 사용할 노드 개수      
+#define server_ip "xxx.xxx.x.xx1"                         // 일대다 통신, 다대일 통신 때 일에 해당하는 노드 IP
 
-string node[num_of_node] = {server_ip,"192.168.0.108"};   // 사용할 노드들의 IP
+string node[num_of_node] = {server_ip,"xxx.xxx.x.xx2",    // 사용할 노드들의 IP
+                          "xxx.xxx.x.xx3","xxx.xxx.x.xx4"};   
 ```
 
 ### 통신 전 단계
