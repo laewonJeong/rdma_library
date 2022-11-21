@@ -38,7 +38,7 @@ int main(int argc, char* argv[]){
   
   cerr << "============ many_to_many_communication ============" << endl;
   /* many to many communication*/
-  msg = "Hi many-to-many communication! [ " + ip + " ]";
+  msg = "[ " + ip + " ] Hi many-to-many communication!";
   myrdma.rdma_comm(opcode, msg);
   printf("recv_buffer[0]: %s\n", recv_buffer[0]); 
 
