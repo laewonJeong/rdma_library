@@ -1,7 +1,4 @@
 #include "myRDMA.hpp"
-#include <fstream>
-#include <sstream>
-#include <ctime>
 #define port 40145
 #define num_of_node 2
 #define server_ip "192.168.0.107"
@@ -30,7 +27,6 @@ int main(int argc, char* argv[]){
   myRDMA myrdma;
 
   myrdma.initialize_rdma_connection(argv[1], node, num_of_node, port,send_buffer,recv_buffer);
- 
   myrdma.create_rdma_info();
   myrdma.send_info_change_qp();
 
