@@ -1,9 +1,9 @@
 #include "myRDMA.hpp"
 #define port 40145
-#define num_of_node 2
-#define server_ip "192.168.0.107"
+#define num_of_node 9
+#define server_ip "192.168.0.100"
 
-string node[num_of_node] = {server_ip,"192.168.0.108"};
+string node[num_of_node] = {server_ip,"192.168.0.101","192.168.0.102","192.168.0.103","192.168.0.104","192.168.0.105","192.168.0.106","192.168.0.107","192.168.0.108"};
 
 char send_buffer[num_of_node][buf_size];
 char recv_buffer[num_of_node][buf_size];
@@ -41,8 +41,9 @@ int main(int argc, char* argv[]){
   /* many to many communication*/
   msg = "[ " + ip + " ] Hi many-to-many communication!";
   myrdma.rdma_comm(opcode, msg);
-  printf("recv_buffer[0]: %s\n", recv_buffer[0]); 
-
+  for(int i=0;i<num_of_node-1;i++){
+    printf("recv_buffer[%d]: %s\n", i, recv_buffer[i]); 
+  }
   cerr << "========================== one_to_many_communication ==========================" << endl;
 
   /* 1 to many communication */
